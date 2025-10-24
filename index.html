@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SM High Tech Industrial Engineering Care - To-Do List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+            margin: 5px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2, h3 {
+            color: #555;
+            font-weight: normal;
+        }
+
+        form {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        form input, form button {
+            padding: 8px;
+            margin: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 95%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        td button {
+            background-color: #f44336;
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+
+        td button:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Heading Section -->
+    <h1>SM High Tech Industrial Engineering Care</h1>
+    <h2>Course Name: Web Development</h2>
+    <h3>Trainer: Abdullah Al Mamun</h3>
+
+    <!-- Form for Input -->
+    <form id="todoForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="text" id="polytechnic" placeholder="Your Polytechnic" required>
+        <input type="text" id="classNo" placeholder="Class No." required>
+        <input type="date" id="classDate" required>
+        <input type="text" id="toolsUsed" placeholder="Class Tools Used" required>
+        <input type="text" id="workDetails" placeholder="Class Work Details" required>
+        <input type="text" id="remarks" placeholder="Remarks">
+        <button type="submit">Submit</button>
+    </form>
+
+    <!-- Dynamic Table -->
+    <table id="todoTable">
+        <thead>
+            <tr>
+                <th>Your Name</th>
+                <th>Your Polytechnic</th>
+                <th>Class No.</th>
+                <th>Class Date</th>
+                <th>Class Tools Used</th>
+                <th>Class Work Details</th>
+                <th>Remarks</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dynamic Rows will appear here -->
+        </tbody>
+    </table>
+
+    <!-- JavaScript -->
+    <script>
+        const form = document.getElementById('todoForm');
+        const tableBody = document.getElementById('todoTable').querySelector('tbody');
+
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+
+            // Collect form values
+            const name = document.getElementById('name').value;
+            const polytechnic = document.getElementById('polytechnic').value;
+            const classNo = document.getElementById('classNo').value;
+            const classDate = document.getElementById('classDate').value;
+            const toolsUsed = document.getElementById('toolsUsed').value;
+            const workDetails = document.getElementById('workDetails').value;
+            const remarks = document.getElementById('remarks').value;
+
+            // Create new row
+            const row = document.createElement('tr');
+
+            row.innerHTML = `
+                <td>${name}</td>
+                <td>${polytechnic}</td>
+                <td>${classNo}</td>
+                <td>${classDate}</td>
+                <td>${toolsUsed}</td>
+                <td>${workDetails}</td>
+                <td>${remarks}</td>
+                <td><button onclick="deleteRow(this)">Delete</button></td>
+            `;
+
+            tableBody.appendChild(row);
+
+            // Reset form
+            form.reset();
+        });
+
+        // Function to delete a row
+        function deleteRow(button){
+            const row = button.parentElement.parentElement;
+            row.remove();
+        }
+    </script>
+
+</body>
+</html>
+Se
